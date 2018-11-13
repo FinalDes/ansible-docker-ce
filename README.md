@@ -6,11 +6,11 @@ A brief description of the role goes here.
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Look official OS support before setup. Not every version of Ubuntu have all type of branch.
 
 Role Variables
 --------------
-**branch**: docker distrubution branch (stable/test/edge)
+**branch**: docker distrubution branch (stable/test/edge/nightly)
 
 Dependencies
 ------------
@@ -20,12 +20,12 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Setup docker-ce stable branch. Incorrect branch will fail the task.
 
 ``` YAML
   - hosts: servers
     roles:
-       - { role: docker, branch: stable }
+       - { role: docker-ce, branch: stable }
 ```
 
 License
