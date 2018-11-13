@@ -1,2 +1,23 @@
 ---
-# tasks file for docker
+- name: Import the public key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    id: 0EBFCD88
+- name: add repository ubuntu
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable'
+    state: present
+    filename: 'docker'
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu'
+- name: add repository debian
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/debian {{ansible_distribution_release}} stable'
+    state: present
+    filename: 'docker'
+    update_cache: yes
+  when: ansible_distribution == 'Debian'
+- name: install docker
+  apt:
+    name: docker-ce
+    state: present
