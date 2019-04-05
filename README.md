@@ -1,4 +1,4 @@
-Ansible Docker [![Build Status](https://travis-ci.org/FinalDes/ansible-docker.svg?branch=master)](https://travis-ci.org/FinalDes/ansible-docker)
+Ansible Docker [![Build Status](https://travis-ci.org/FinalDes/ansible-docker-ce.svg?branch=master)](https://travis-ci.org/FinalDes/ansible-docker-ce)
 =========
 
 A brief description of the role goes here.
