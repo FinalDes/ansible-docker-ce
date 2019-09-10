@@ -5,14 +5,14 @@
     id: 0EBFCD88
 - name: add repository ubuntu
   apt_repository:
-    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} {{channel}}'
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} {{branch}}'
     state: present
     filename: 'docker'
     update_cache: yes
   when: ansible_distribution == 'Ubuntu'
 - name: add repository debian
   apt_repository:
-    repo: 'deb [arch=amd64] https://download.docker.com/linux/debian {{ansible_distribution_release}} {{channel}}'
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/debian {{ansible_distribution_release}} {{branch}}'
     state: present
     filename: 'docker'
     update_cache: yes
