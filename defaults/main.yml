@@ -1,4 +1,4 @@
 ---
 # defaults file for docker
 
-channels: stable
+channel: stable
