@@ -1,20 +1,12 @@
 galaxy_info:
-  author: your name
-  description: your description
-  company: your company (optional)
+  author: Alex Alonso
+  description: Docker host setup
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker
 
-  # Some suggested licenses:
-  # - BSD (default)
-  # - MIT
-  # - GPLv2
-  # - GPLv3
-  # - Apache
-  # - CC-BY
-  license: license (GPLv2, CC-BY, etc)
+  license: MIT
 
   min_ansible_version: 2.4
 
@@ -35,7 +27,9 @@ galaxy_info:
   # To view available platforms and versions (or releases), visit:
   # https://galaxy.ansible.com/api/v1/platforms/
   #
-  # platforms:
+  platforms:
+    - name: Ubuntu
+    - name: Debian
   # - name: Fedora
   #   versions:
   #   - all
