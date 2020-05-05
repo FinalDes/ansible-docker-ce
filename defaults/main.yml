@@ -3,4 +3,4 @@
 
 branch: stable
 compose: false
-compose-version: 1.25.5
+compose_version: "1.25.5"

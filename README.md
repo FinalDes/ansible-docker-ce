@@ -12,7 +12,7 @@ Role Variables
 --------------
 **branch**: docker distrubution branch (stable/test/edge/nightly), **default:** stable
 **compose**: set true when need docker compose into machine, **default:** false
-**compose-version**: docker compose version want to download **default:**  1.25.5
+**compose_version**: docker compose version want to download **default:**  1.25.5
 
 Dependencies
 ------------
