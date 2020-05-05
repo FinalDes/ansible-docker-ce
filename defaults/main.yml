@@ -2,3 +2,4 @@
 # defaults file for docker
 
 branch: stable
+compose: false

@@ -10,7 +10,8 @@ Look official OS support before setup. Not every version of Ubuntu have all type
 
 Role Variables
 --------------
-**branch**: docker distrubution branch (stable/test/edge/nightly)
+**branch**: docker distrubution branch (stable/test/edge/nightly), default: stable
+**compose**: set true when need docker compose into machine, default false
 
 Dependencies
 ------------
