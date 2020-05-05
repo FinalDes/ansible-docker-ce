@@ -3,3 +3,4 @@
 
 branch: stable
 compose: false
+compose-version: 1.25.5
