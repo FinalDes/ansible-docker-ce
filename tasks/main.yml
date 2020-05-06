@@ -1,4 +1,14 @@
 ---
+- name: allow install apt over https
+  apt:
+    name: "{{packages}}"
+    state: present
+  vars:
+    packages:
+    - apt-transport-https
+    - ca-certificates
+    - gnupg-agent
+    - software-properties-common
 - name: Import the public key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
