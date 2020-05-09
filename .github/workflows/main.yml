@@ -21,8 +21,8 @@ jobs:
           - "nightly"
         os:
           - ubuntu-18.04
-      #   python-version:
-      #     - 3.6
+        python-version:
+          - "3.6"
     steps:
       - uses: actions/checkout@v2.1.0
         # with:
@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python 3.6
         uses: actions/setup-python@v2
         with:
-          python-version: 3.6
+          python-version: ${{matrix.python-version}}
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
@@ -43,5 +43,9 @@ jobs:
         run: yamllint .
       - name: check ansible lint
         run: ansible-lint
+      - name: set ansible config
+        run: printf '[defaults]\nroles_path=../' >ansible.cfg
+      - name: ansible syntax-check
+        run: ansible-playbook tests/test.yml -i tests/inventory --syntax-check
       - name: Run docker ${{matrix.version}} test
         run: molecule test --scenario-name ${{matrix.version}}
