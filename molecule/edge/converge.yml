@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ansible_user: ansible
+  roles:
+    - name: "ansible-docker-ce"
+      branch: "edge"
+      become: true
+      compose: true
+      compose_version: "1.25.5"

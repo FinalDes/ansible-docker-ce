@@ -1,0 +1,16 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: ubuntu18.04
+    image: finaldes/docker-ubuntu-ansible:bionic-20200403
+    pre_build_image: true
+  - name: ubuntu16.04
+    image: finaldes/docker-ubuntu-ansible:xenial-20200326
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

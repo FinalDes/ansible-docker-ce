@@ -26,7 +26,10 @@ script:
   # - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
 
   # test ansible roles
-  - molecule test
+  - molecule test ----scenario-name stable
+  - molecule test ----scenario-name edge
+  - molecule test ----scenario-name test
+  - molecule test ----scenario-name nightly
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
