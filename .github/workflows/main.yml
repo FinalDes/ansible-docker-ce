@@ -21,6 +21,7 @@ jobs:
           - "nightly"
         os:
           - ubuntu-18.04
+          - windows-2019
       #   python-version:
       #     - 3.6
     steps:
@@ -32,7 +33,7 @@ jobs:
         with:
           python-version: 3.6
       - name: Install dependencies
-        run: python3 -m pip install 'molecule[docker]'
+        run: pip3 install 'molecule[docker]'
       - name: check molecule exists
         run: molecule --version
       - name: Run docker ${{matrix.version}} test
