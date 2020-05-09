@@ -32,8 +32,16 @@ jobs:
         with:
           python-version: 3.6
       - name: Install dependencies
-        run: pip3 install 'molecule[docker]'
-      - name: check molecule exists
-        run: molecule --version
+        run: pip3 install -r requirements.txt
+      - name: check yaml linting
+        run: yamllint .
+      - name: check ansible lint
+        run: ansible-lint
       - name: Run docker ${{matrix.version}} test
         run: molecule test --scenario-name ${{matrix.version}}
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-

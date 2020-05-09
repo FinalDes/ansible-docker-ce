@@ -1,7 +1,7 @@
 ---
 - name: allow install apt over https
   apt:
-    name: "{{packages}}"
+    name: "{{ packages }}"
     state: present
     update_cache: true
   vars:
@@ -34,8 +34,8 @@
     state: present
 - name: Add user to 'docker' group
   user:
-    name: "{{ ansible_user_id }}" 
-    groups: 
+    name: "{{ ansible_user_id }}"
+    groups:
       - docker
     state: present
     append: true

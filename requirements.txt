@@ -1,0 +1,4 @@
+yamlint
+ansible-lint
+molecule
+ansible
