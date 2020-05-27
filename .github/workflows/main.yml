@@ -49,3 +49,6 @@ jobs:
         run: ansible-playbook tests/test.yml -i tests/inventory --syntax-check
       - name: Run docker ${{matrix.version}} test
         run: molecule test --scenario-name ${{matrix.version}}
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
