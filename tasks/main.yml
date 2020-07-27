@@ -43,5 +43,5 @@
   get_url:
     url: "https://github.com/docker/compose/releases/download/{{ compose_version }}/docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
-    mode: '0751'
+    mode: '0755'
   when: compose
