@@ -34,7 +34,6 @@ galaxy_info:
         - jammy
         - bionic
         - focal
-        - xenial
     - name: Debian
   # - name: Fedora
   #   versions:

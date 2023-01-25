@@ -18,13 +18,13 @@ platforms:
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: ubuntu16.04
-    image: finaldes/docker-ubuntu-ansible:xenial-20200326
-    pre_build_image: true
-    privileged: true
-    command: ""
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  # - name: ubuntu16.04
+  #   image: finaldes/docker-ubuntu-ansible:xenial-20200326
+  #   pre_build_image: true
+  #   privileged: true
+  #   command: ""
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
 verifier:
