@@ -4,7 +4,7 @@
   vars:
     ansible_user: ansible
   roles:
-    - name: "ansible-docker-ce"
+    - role: "ansible-docker-ce"
       branch: "nightly"
       become: true
       compose: true

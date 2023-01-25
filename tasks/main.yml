@@ -1,6 +1,6 @@
 ---
-- name: allow install apt over https
-  apt:
+- name: Allow install apt over https
+  ansible.builtin.apt:
     name: "{{ packages }}"
     state: present
     update_cache: true
@@ -11,36 +11,36 @@
     - gnupg-agent
     - software-properties-common
 - name: Import the public key
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
-- name: add repository ubuntu
-  apt_repository:
+- name: Add repository ubuntu
+  ansible.builtin.apt_repository:
     repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} {{ branch }}'
     state: present
     filename: 'docker'
     update_cache: yes
   when: ansible_distribution == 'Ubuntu'
-- name: add repository debian
-  apt_repository:
+- name: Add repository debian
+  ansible.builtin.apt_repository:
     repo: 'deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} {{ branch }}'
     state: present
     filename: 'docker'
     update_cache: yes
   when: ansible_distribution == 'Debian'
-- name: install docker
-  apt:
+- name: Install docker
+  ansible.builtin.apt:
     name: docker-ce
     state: present
 - name: Add user to 'docker' group
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     groups:
       - docker
     state: present
     append: true
-- name: setup docker-compose
-  get_url:
+- name: Setup docker-compose
+  ansible.builtin.get_url:
     url: "https://github.com/docker/compose/releases/download/{{ compose_version }}/docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
     mode: '0755'
