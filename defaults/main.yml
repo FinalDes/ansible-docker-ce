@@ -4,3 +4,4 @@
 branch: stable
 compose: false
 compose_version: "1.25.5"
+download_root_path: "https://github.com/docker/compose/releases/download/"
