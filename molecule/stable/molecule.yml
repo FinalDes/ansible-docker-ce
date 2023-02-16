@@ -4,14 +4,20 @@ dependency:
 driver:
   name: docker
 platforms:
+  - name: ubuntu22.04
+    image: finaldes/docker-ubuntu-ansible:jammy-20230215
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: ubuntu20.04
-    image: finaldes/docker-ubuntu-ansible:focal-20210226-1810
+    image: finaldes/docker-ubuntu-ansible:focal-20230215
     pre_build_image: true
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: ubuntu18.04
-    image: finaldes/docker-ubuntu-ansible:bionic-20210226-1810
+    image: finaldes/docker-ubuntu-ansible:bionic-20230215
     pre_build_image: true
     privileged: true
     volumes:
