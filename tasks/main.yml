@@ -6,26 +6,26 @@
     update_cache: true
   vars:
     packages:
-    - apt-transport-https
-    - ca-certificates
-    - gnupg-agent
-    - software-properties-common
-    - python3-debian
+      - apt-transport-https
+      - ca-certificates
+      - gnupg-agent
+      - software-properties-common
+      - python3-debian
 - name: Add docker repository
   ansible.builtin.deb822_repository:
     name: docker
     types: [deb]
-    uris: "https://download.docker.com/linux/{{ ansible_distribution | lower }}"
-    signed_by: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    uris: https://download.docker.com/linux/{{ ansible_distribution | lower }}
+    signed_by: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
     suites: ["{{ ansible_distribution_release | lower }}"]
     components: [stable]
     state: present
-    
+
 - name: Install docker
   ansible.builtin.apt:
     name: docker-ce
     state: present
-    update_cache: yes
+    update_cache: true
 - name: Add user to 'docker' group
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
@@ -35,9 +35,9 @@
     append: true
 - name: Setup docker-compose
   ansible.builtin.get_url:
-    url: "{{ download_root_path }}{{ compose_version }}/docker-compose-Linux-x86_64"
+    url: "{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_compose_version }}/docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
-    mode: 0755
+    mode: "0755"
     force: true
-    checksum: "sha256:{{ download_root_path }}{{ compose_version }}/docker-compose-Linux-x86_64.sha256"
-  when: compose
+    checksum: sha256:{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_compose_version }}/docker-compose-Linux-x86_64.sha256
+  when: ansible_docker_ce_compose

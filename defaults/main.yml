@@ -1,7 +1,7 @@
 ---
 # defaults file for docker
 
-branch: stable
-compose: false
-compose_version: "1.25.5"
-download_root_path: "https://github.com/docker/compose/releases/download/"
+ansible_docker_ce_branch: stable
+ansible_docker_ce_compose: false
+ansible_docker_ce_compose_version: 1.25.5
+ansible_docker_ce_download_root_path: https://github.com/docker/compose/releases/download/
