@@ -40,10 +40,18 @@
       - docker
     state: present
     append: true
-- name: Setup docker-compose
+- name: Setup v1 docker-compose 
+  ansible.builtin.get_url:
+    url: "{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_v1_compose_version }}/docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    mode: "0755"
+    force: true
+    checksum: sha256:{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_v1_compose_version }}/docker-compose-Linux-x86_64.sha256
+  when: ansible_docker_ce_compose
+- name: Setup new docker-compose
   ansible.builtin.get_url:
     url: "{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_compose_version }}/docker-compose-Linux-x86_64"
-    dest: /usr/local/bin/docker-compose
+    dest: /usr/local/lib/docker/cli-plugins
     mode: "0755"
     force: true
     checksum: sha256:{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_compose_version }}/docker-compose-Linux-x86_64.sha256

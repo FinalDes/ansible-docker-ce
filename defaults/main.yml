@@ -3,5 +3,6 @@
 
 ansible_docker_ce_branch: stable
 ansible_docker_ce_compose: false
-ansible_docker_ce_compose_version: 1.25.5
+ansible_docker_ce_v1_compose_version: 1.29.2
+ansible_docker_ce_compose_version: v2.32.4
 ansible_docker_ce_download_root_path: https://github.com/docker/compose/releases/download/
