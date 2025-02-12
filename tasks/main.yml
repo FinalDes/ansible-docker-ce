@@ -45,14 +45,21 @@
     url: "{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_v1_compose_version }}/docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
     mode: "0755"
-    force: true
     checksum: sha256:{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_v1_compose_version }}/docker-compose-Linux-x86_64.sha256
+  when: ansible_docker_ce_compose
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /usr/local/lib/docker/cli-plugins
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+  register: docker_compose_path
   when: ansible_docker_ce_compose
 - name: Setup new docker-compose
   ansible.builtin.get_url:
     url: "{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_compose_version }}/docker-compose-linux-x86_64"
-    dest: /usr/local/lib/docker/cli-plugins
+    dest: "{{ docker_compose_path.path }}/docker-compose"
     mode: "0755"
-    force: true
     checksum: sha256:{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_compose_version }}/docker-compose-linux-x86_64.sha256
   when: ansible_docker_ce_compose
