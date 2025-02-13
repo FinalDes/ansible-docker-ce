@@ -7,5 +7,5 @@
     - role: finaldes.ansible_docker_ce
       ansible_docker_ce_branch: test
       ansible_docker_ce_compose: true
-      ansible_docker_ce_compose_version: "1.29.2"
+      ansible_docker_ce_compose_version: "v2.33.0"
       become: true

@@ -28,11 +28,11 @@
     update_cache: true
   vars:
     packages:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
-        - docker-buildx-plugin 
-        - docker-compose-plugin
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
 - name: Add user to 'docker' group
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
@@ -40,14 +40,14 @@
       - docker
     state: present
     append: true
-- name: Setup v1 docker-compose 
+- name: Setup v1 docker-compose
   ansible.builtin.get_url:
     url: "{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_v1_compose_version }}/docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
     mode: "0755"
     checksum: sha256:{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_v1_compose_version }}/docker-compose-Linux-x86_64.sha256
   when: ansible_docker_ce_compose
-- name: Create a directory if it does not exist
+- name: Create docker plugin directory for docker compose
   ansible.builtin.file:
     path: /usr/local/lib/docker/cli-plugins
     state: directory
