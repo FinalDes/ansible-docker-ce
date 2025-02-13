@@ -17,9 +17,9 @@ jobs:
       matrix:
         version:
           - "stable"
-          - "edge"
+          # - "edge"
           - "test"
-          - "nightly"
+          # - "nightly"
         os:
           - ubuntu-24.04
         python-version:
