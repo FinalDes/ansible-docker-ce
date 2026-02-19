@@ -1,2 +1,3 @@
 ---
 # vars file for docker
+ansible_docker_ce_download_root_path: https://github.com/docker/compose/releases/download/

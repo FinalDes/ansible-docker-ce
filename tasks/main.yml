@@ -4,6 +4,7 @@
     name: "{{ packages }}"
     state: present
     update_cache: true
+  become: true
   vars:
     packages:
       - apt-transport-https
@@ -20,12 +21,14 @@
     suites: ["{{ ansible_distribution_release | lower }}"]
     components: ["{{ ansible_docker_ce_branch | lower }}"]
     state: present
+  become: true
 
 - name: Install docker
   ansible.builtin.apt:
     name: "{{ packages }}"
     state: present
     update_cache: true
+  become: true
   vars:
     packages:
       - docker-ce
@@ -40,6 +43,7 @@
       - docker
     state: present
     append: true
+  become: true
 - name: Setup v1 docker-compose
   ansible.builtin.get_url:
     url: "{{ ansible_docker_ce_download_root_path }}{{ ansible_docker_ce_v1_compose_version }}/docker-compose-Linux-x86_64"

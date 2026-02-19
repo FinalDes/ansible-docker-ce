@@ -1,0 +1,24 @@
+argument_specs:
+  main:
+    short_description: Main entry point for the ansible-docker-ce role
+    options:
+      ansible_docker_ce_branch:
+        type: str
+        required: false
+        default: stable
+        description: Docker CE release branch to use (e.g., stable, edge)
+      ansible_docker_ce_compose:
+        type: bool
+        required: false
+        default: false
+        description: Whether to install Docker Compose
+      ansible_docker_ce_v1_compose_version:
+        type: str
+        required: false
+        default: 1.29.2
+        description: Version of Docker Compose v1 to install
+      ansible_docker_ce_compose_version:
+        type: str
+        required: false
+        default: v2.32.4
+        description: Version of Docker Compose v2 to install
