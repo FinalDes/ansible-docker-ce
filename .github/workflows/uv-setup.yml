@@ -22,6 +22,12 @@ jobs:
   uv:
     name: uv sync
     runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+    #     branch:
+    #       - stable
+    #       - test
+    #       - nightly
 
     steps:
       - name: Checkout repository
@@ -49,6 +55,9 @@ jobs:
 
       - name: ansible syntax-check
         run: uv run ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+
+      # - name: molecule test
+      #   run: uv run molecule test --scenario-name stable --extra-vars "ansible_docker_ce_branch=${{ matrix.branch }}"
 
       - name: Minimize uv cache
         run: uv cache prune --ci
