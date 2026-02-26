@@ -1,21 +1,23 @@
 ---
 dependency:
   name: galaxy
-driver:
-  name: docker
+  options:
+    requirements-file: requirements.yml
 platforms:
-  - name: ubuntu22.04
-    image: finaldes/docker-ubuntu-ansible:jammy-20230215
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: ubuntu20.04
-    image: finaldes/docker-ubuntu-ansible:focal-20230215
-    pre_build_image: true
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  # - name: ubuntu22.04
+  #   image: finaldes/docker-ubuntu-ansible:jammy-20230215
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: molecule-ubuntu
+    image: ansible-ubuntu-image:24.04
+  # - name: ubuntu20.04
+  #   image: finaldes/docker-ubuntu-ansible:focal-20230215
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
   # - name: ubuntu18.04
   #   image: finaldes/docker-ubuntu-ansible:bionic-20230215
   #   pre_build_image: true
@@ -28,7 +30,10 @@ platforms:
 #   privileged: true
 #   volumes:
 #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
-provisioner:
-  name: ansible
+ansible:
+  env:
+    ANSIBLE_ROLES_PATH: ./../../../
+    ANSIBLE_FORCE_COLOR: "1"
+    ANSIBLE_LOAD_CALLBACK_PLUGINS: "1"
 verifier:
   name: ansible

@@ -1,6 +1,9 @@
 ---
+profile: production
 exclude_paths:
-  - tests/
   - .github/
+  - tests/
+  - molecule/*/roles/
+  - molecule/**/create-fail.yml
+  - molecule/apply/inventory.yml
   - .travis.yml
-  - meta/

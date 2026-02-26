@@ -5,7 +5,7 @@
     ansible_user: ansible
   roles:
     - role: finaldes.ansible_docker_ce
-      ansible_docker_ce_branch: edge
+      ansible_docker_ce_branch: stable
       ansible_docker_ce_compose: true
       ansible_docker_ce_compose_version: "v2.33.0"
       become: true
