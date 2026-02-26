@@ -1,0 +1,50 @@
+# documentation only
+# only to record how is use offcial ansible lint github action to check linting
+name: Ansible Lint for Galaxy Role
+
+on:
+  pull_request:
+    branches:
+      - "main"
+    paths-ignore:
+      - ".github/**"
+      - ".vscode/**"
+      - "README.md"
+      - .gitignore
+      - pyproject.toml
+      - uv.lock
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - ".github/**"
+      - ".vscode/**"
+      - "README.md"
+      - .gitignore
+      - pyproject.toml
+      - uv.lock
+
+jobs:
+  ansible-lint:
+    name: Ansible Lint
+    continue-on-error: true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: set ansible config
+        run: printf '[defaults]\nroles_path=../' >ansible.cfg
+
+      - name: Read python version from file
+        id: get-python-version
+        run: echo "python_version=$(cat .python-version)" >> "$GITHUB_OUTPUT"
+
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@v26.1.1 # Use a stable version, check for latest at github.com/ansible/ansible-lint/releases
+        with:
+          working_directory: "" # Root of the role (where tasks/, defaults/, etc. are)
+          setup_python: "true" # Ensures Python is set up
+          python_version: ${{ steps.get-python-version.outputs.python_version }} # Specify Python version if needed
+          requirements_file: "requirements.yml" # If your role depends on collections

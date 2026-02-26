@@ -1,0 +1,21 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/" # Root directory
+    schedule:
+      interval: "daily" # "weekly" "monthly" if you want less frequent reminders
+  - package-ecosystem: "uv"
+    directory: "/" # Root directory
+    schedule:
+      interval: "daily" # "weekly" "monthly" if you want less frequent reminders
+    allow:
+      - dependency-type: "all"
+    groups:
+      uv dependencies:
+        patterns:
+          - "uv.lock"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+          - "version-update:semver-major"
