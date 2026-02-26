@@ -42,7 +42,7 @@ jobs:
         run: echo "python_version=$(cat .python-version)" >> "$GITHUB_OUTPUT"
 
       - name: Run ansible-lint
-        uses: ansible/ansible-lint@v26.1.1 # Use a stable version, check for latest at github.com/ansible/ansible-lint/releases
+        uses: ansible/ansible-lint@v26.2.0 # Use a stable version, check for latest at github.com/ansible/ansible-lint/releases
         with:
           working_directory: "" # Root of the role (where tasks/, defaults/, etc. are)
           setup_python: "true" # Ensures Python is set up
