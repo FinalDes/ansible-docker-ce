@@ -13,12 +13,17 @@
         name: "{{ item.name }}"
         image: "{{ item.image }}"
         state: started
-        command: sleep 1d
+        command: /lib/systemd/systemd --system --log-level=info --log-target=console
+        cgroupns_mode: host
+        security_opts:
+          - seccomp=unconfined
         log_driver: json-file
         volumes:
-          - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+          - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
           - "/tmp:/tmp"
-          - "/run:/run"
+        privileged: true
+        env:
+          container: docker
       register: result
       loop: "{{ molecule_yml.platforms }}"
 
